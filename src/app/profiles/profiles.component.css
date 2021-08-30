@@ -1,0 +1,11 @@
+.col-md-4 {
+    border: 5px;
+    border-color: black;
+    background-color: blanchedalmond;
+    margin: 10px;
+    float: right
+}
+
+.searchorm {
+    padding: 10px;
+}

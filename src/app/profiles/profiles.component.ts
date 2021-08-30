@@ -15,13 +15,17 @@ user!:Users;
 //repo!:Repos;
   //repo!:Repos;
   repos!: Repos[];
+  username!:string;
   constructor(public profileService:ProfileRequestService,public userRepos:ProfileRequestService) { }
-
+  searchprofile(){
+    this.profileService.updateProfile(this.username)
+    this.profileService.profileRequest()
+    this.user=this.profileService.user
+    //this.profileService.profileRequestRepos()
+    this.userRepos.profileRequestRepos()
+  }
   ngOnInit() {
-   this.profileService.profileRequest()
-   this.user=this.profileService.user
-   //this.profileService.profileRequestRepos()
-   this.userRepos.profileRequestRepos()
+
    console.log("what is")
   console.log(this.userRepos)
   }

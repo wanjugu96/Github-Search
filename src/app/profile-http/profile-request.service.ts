@@ -10,9 +10,11 @@ export class ProfileRequestService {
 user!:Users;
   repo!: Repos;
   newrepo:any
+  private username!: string;
 constructor(private http:HttpClient) {
   this.user = new Users("","","",0,0,0,"");
   this.repo=new Repos("","","")
+  this.username="wanjugu96"
  }
  profileRequest(){
   interface ApiResponse{
@@ -26,7 +28,7 @@ constructor(private http:HttpClient) {
   }
  
  let promise=new Promise<void>((resolve, reject) => {
-   this.http.get<ApiResponse>("https://api.github.com/users/wanjugu96?access_token=" + environment.apiKey).toPromise().then(response=>{
+   this.http.get<ApiResponse>('https://api.github.com/users/'+this.username+'?access_token=' + environment.apiKey).toPromise().then(response=>{
      this.user.name=response.name
      this.user.login=response.login
      this.user.company=response.company
@@ -59,7 +61,9 @@ profileRequestRepos(){
  //https://api.github.com/repos/wanjugu96/Delani-Studio
  //https://api.github.com/users/wanjugu96/repos (all my repos)
  let mypromise=new Promise<void>((resolve, reject) => {
-   this.http.get<ApiResponse>('https://api.github.com/users/wanjugu96/repos?access_token=' + environment.apiKey).toPromise().then(reporesponse=>{
+   //   this.http.get<ApiResponse>('https://api.github.com/users/wanjugu96/repos?access_token=' + environment.apiKey).toPromise().then(reporesponse=>{
+
+   this.http.get<ApiResponse>('https://api.github.com/users/'+ this.username+'/repos?access_token=' + environment.apiKey).toPromise().then(reporesponse=>{
     //  this.repo.name=reporesponse.name
     //  this.repo.html_url=reporesponse.html_url
     //  this.repo.description=reporesponse.description
@@ -76,5 +80,8 @@ profileRequestRepos(){
    })
  })
  return mypromise
+}
+updateProfile(username:string){
+this.username=username;
 }
 }
