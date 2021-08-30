@@ -7,4 +7,12 @@
     <p>following:{{user.following}}</p>
     <p>followers:{{user.followers}}</p>
     <p>public repos:{{user.public_repos}}</p>
+    <h1>Repos</h1>
+    <!-- *ngFor="let repo of repos" -->
+    <div *ngFor="let repo of userRepos.newrepo">
+        <p>Repo Name:{{repo.name}}</p>
+        <p>repo url:{{repo.html_url}}</p>
+        <p>repo description:{{repo.description}}</p>
+
+    </div>
 </div>

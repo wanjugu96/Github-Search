@@ -2,13 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Users } from '../users';
 import {environment } from '../../environments/environment';
+import { Repos } from '../repos';
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileRequestService {
 user!:Users;
+  repo!: Repos;
+  newrepo:any
 constructor(private http:HttpClient) {
   this.user = new Users("","","",0,0,0);
+  this.repo=new Repos("","","")
  }
  profileRequest(){
   interface ApiResponse{
@@ -21,7 +25,7 @@ constructor(private http:HttpClient) {
   }
  
  let promise=new Promise<void>((resolve, reject) => {
-   this.http.get<ApiResponse>('https://api.github.com/users/daneden?access_token=' + environment.apiKey).toPromise().then(response=>{
+   this.http.get<ApiResponse>("https://api.github.com/users/wanjugu96?access_token=" + environment.apiKey).toPromise().then(response=>{
      this.user.name=response.name
      this.user.login=response.login
      this.user.company=response.company
@@ -31,17 +35,43 @@ constructor(private http:HttpClient) {
       resolve()
    },
    error=>{
-   //(,,,1,9,33)
-
-     this.user.name="Wanjugu Mungau"
+     this.user.name="Wanjugu Mungau errror woi"
      this.user.login="Wanjugu M"
      this.user.company="Getbee UAE"
      this.user.followers=1
      this.user.following=9
-     this.user.public_repos=33
+     this.user.public_repos=100
      reject(error)
    })
  })
  return promise
+}
+profileRequestRepos(){
+  interface ApiResponse{
+     name:string;
+     html_url:string;
+     description:string;
+     
+  }
+ //https://api.github.com/repos/wanjugu96/Delani-Studio
+ //https://api.github.com/users/wanjugu96/repos (all my repos)
+ let mypromise=new Promise<void>((resolve, reject) => {
+   this.http.get<ApiResponse>('https://api.github.com/users/wanjugu96/repos?access_token=' + environment.apiKey).toPromise().then(reporesponse=>{
+    //  this.repo.name=reporesponse.name
+    //  this.repo.html_url=reporesponse.html_url
+    //  this.repo.description=reporesponse.description
+    this.newrepo=reporesponse;
+      resolve()
+   },
+   error=>{
+   //(,,,1,9,33)
+
+     this.repo.name="Activity 4"
+     this.repo.html_url="https://github.com/wanjugu96/activity4"
+ 
+     reject(error)
+   })
+ })
+ return mypromise
 }
 }
