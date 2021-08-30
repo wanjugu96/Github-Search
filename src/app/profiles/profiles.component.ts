@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Users } from '../users';
+import { ProfileRequestService } from '../profile-http/profile-request.service';
 
 @Component({
   selector: 'app-profiles',
@@ -9,24 +10,10 @@ import { Users } from '../users';
 })
 export class ProfilesComponent implements OnInit {
 user!:Users;
-  constructor(private http:HttpClient) { }
+  constructor(private profileService:ProfileRequestService) { }
 
   ngOnInit(): void {
-    interface ApiResponse{
-      login:string;
-       name:string;
-        company:string; 
-        followers:number;
-        following:number;
-         public_repos:number ;
-    }
-    
-    this.http.get<ApiResponse>("https://api.github.com/users/wanjugu96").subscribe(data=>{
-      //successfull Api request
-      this.user=new Users(data.login,data.name,data.company,data.followers,data.following,data.public_repos)
-  },err=>
-  this.user=new Users("Wanjugu Mungau","Wanjugu M","Getbee UAE",1,9,33)
- // console.log("an Error occured.")
-    )
+   this.profileService.profileRequest()
+   this.user=this.profileService.user
   }
 }
