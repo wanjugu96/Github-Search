@@ -1,6 +1,6 @@
 body {
     height: 100%;
-    /* background-image: url('src\app\images\pexels-junior-teixeira-2072060.jpg'); */
+    background-image: url('src\app\images\pexels-junior-teixeira-2072060.jpg');
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -17,9 +17,11 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: white;
 }
 
 .content {
     margin: 100px;
     background-color: rgba(192, 192, 192, 0.1);
+    columns: white;
 }
