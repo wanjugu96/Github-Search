@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { FormsModule } from '@angular/forms';
+import { UppercaseCountPipe } from './uppercase-count.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfilesComponent
+    ProfilesComponent,
+    UppercaseCountPipe
   ],
   imports: [
     NgProgressModule.forRoot(),

@@ -13,7 +13,7 @@ user!:Users;
   private username!: string;
 constructor(private http:HttpClient) {
   this.user = new Users("","","",0,0,0,"","","");
-  this.repo=new Repos("","","")
+  this.repo=new Repos("","","",new Date())
   this.username="wanjugu96"
  }
  profileRequest(){
@@ -62,6 +62,7 @@ profileRequestRepos(){
      name:string;
      html_url:string;
      description:string;
+     updated_at:Date;
      
   }
  //https://api.github.com/repos/wanjugu96/Delani-Studio

@@ -1,49 +1,45 @@
 <div class="container">
     <h3>Search Github profile below</h3>
     <ng-progress></ng-progress>
-    <form action="" class="searcform" (ngSubmit)="searchprofile()">
+    <form action="" class="searchform" (ngSubmit)="searchprofile()">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="search gti users" [(ngModel)]="username" name="username">
+            <input type="text" class="form-control" placeholder="search Github users" [(ngModel)]="username" name="username">
         </div>
     </form>
     <div *ngIf="user">
         <div class="row">
-            <div class="col-md-3">
-                <!-- <h1>User info</h1>
+            <!-- <div class="col-md-5"> -->
+            <!-- <h1>User info</h1>
                 <img src="{{user.avatar_url}}" alt="user avartar">
                 <p>Name:{{user.name}}</p>
                 <p>github usename:{{user.login}}</p>
                 <p>following:{{user.following}}</p>
                 <p>followers:{{user.followers}}</p>
                 <p>public repos:{{user.public_repos}}</p> -->
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="{{user.avatar_url}}" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">{{user.name}}</h5>
-                        <p class="card-text"> {{user.bio}}</p>
-                        <a href="{{user.html_url}}" class="btn btn-primary">View profile on Github</a>
-                        <button type="button" class="btn btn-primary btn-sm">following {{user.following}}</button>
-                        <button type="button" class="btn btn-secondary btn-sm">followers {{user.followers}}</button>
-                        <button type="button" class="btn btn-secondary btn-sm">Repositories {{user.public_repos}}</button>
+            <div class="card col-md-5" style="width: 18rem;">
+                <img class="card-img-top" src="{{user.avatar_url}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.name}}</h5>
+                    <p class="card-text"> {{user.bio}}</p>
+                    <a href="{{user.html_url}}" class="btn btn-primary">View profile on Github</a>
+                    <button type="button" class="btn btn-primary btn-sm">following {{user.following}}</button>
+                    <button type="button" class="btn btn-secondary btn-sm">followers {{user.followers}}</button>
+                    <button type="button" class="btn btn-secondary btn-sm">Repositories {{user.public_repos}}</button>
 
-                    </div>
+                    <!-- </div> -->
                 </div>
             </div>
 
             <!-- *ngFor="let repo of repos" -->
-            <div class="col-md-9">
+            <div class="col-md-7">
                 <h1>Repos</h1>
                 <div class="row">
-                    <div class="col-md-6 repos" *ngFor="let repo of userRepos.newrepo">
-                        <!-- <p>Repo Name:{{repo.name}}</p>
-                        <p>repo url:{{repo.html_url}}</p>
-                        <p>repo description:{{repo.description}}</p>
-                        <a href='{{repo.html_url}}'><button>view project on Github</button></a>
-                    </div> -->
+                    <div class="col-md-4 repos" *ngFor="let repo of userRepos.newrepo">
+
                         <div class="card" style="width: 18rem;">
                             <div class="card-body">
                                 <h5 class="card-title">{{repo.name}}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">{{repo.updated_at|date}}</h6>
                                 <p class="card-text">{{repo.description}}</p>
                                 <a href="{{repo.html_url}}" class="card-link">view project on Github</a>
 
@@ -54,3 +50,4 @@
             </div>
         </div>
     </div>
+</div>
