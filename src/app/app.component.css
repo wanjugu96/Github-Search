@@ -1,6 +1,6 @@
 body {
     height: 100%;
-    background-image: url('src\app\images\pexels-junior-teixeira-2072060.jpg');
+    /* background-image: url('src\app\images\pexels-junior-teixeira-2072060.jpg'); */
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -8,7 +8,7 @@ body {
 }
 
 .all {
-    background-image: url('src\app\images\pexels-junior-teixeira-2072060.jpg');
+    /* background-image: url('src\app\images\pexels-junior-teixeira-2072060.jpg'); */
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;

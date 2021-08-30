@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { FormsModule } from '@angular/forms';
 import { UppercaseCountPipe } from './uppercase-count.pipe';
+import { RoutingModuleModule } from './routing/routing-module/routing-module.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { UppercaseCountPipe } from './uppercase-count.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RoutingModuleModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
