@@ -2,6 +2,7 @@
     <p>profiles works!</p>
     <ng-progress></ng-progress>
     <h1>User info</h1>
+    <img src="{{user.avatar_url}}" alt="user avartar">
     <p>Name:{{user.name}}</p>
     <p>github usename:{{user.login}}</p>
     <p>following:{{user.following}}</p>
@@ -9,7 +10,7 @@
     <p>public repos:{{user.public_repos}}</p>
     <h1>Repos</h1>
     <!-- *ngFor="let repo of repos" -->
-    <div *ngFor="let repo of userRepos.newrepo">
+    <div class="box" *ngFor="let repo of userRepos.newrepo">
         <p>Repo Name:{{repo.name}}</p>
         <p>repo url:{{repo.html_url}}</p>
         <p>repo description:{{repo.description}}</p>

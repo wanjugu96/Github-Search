@@ -11,7 +11,7 @@ user!:Users;
   repo!: Repos;
   newrepo:any
 constructor(private http:HttpClient) {
-  this.user = new Users("","","",0,0,0);
+  this.user = new Users("","","",0,0,0,"");
   this.repo=new Repos("","","")
  }
  profileRequest(){
@@ -22,6 +22,7 @@ constructor(private http:HttpClient) {
       followers:number;
       following:number;
        public_repos:number ;
+       avatar_url:string;
   }
  
  let promise=new Promise<void>((resolve, reject) => {
@@ -32,6 +33,7 @@ constructor(private http:HttpClient) {
      this.user.followers=response.followers
      this.user.following=response.following
      this.user.public_repos=response.public_repos
+     this.user.avatar_url=response.avatar_url
       resolve()
    },
    error=>{
@@ -41,6 +43,7 @@ constructor(private http:HttpClient) {
      this.user.followers=1
      this.user.following=9
      this.user.public_repos=100
+     this.user.avatar_url="https://avatars.githubusercontent.com/u/18323957?v=4"
      reject(error)
    })
  })
