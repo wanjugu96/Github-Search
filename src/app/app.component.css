@@ -19,4 +19,7 @@ body {
     text-align: center;
 }
 
-.content {}
+.content {
+    margin: 100px;
+    background-color: rgba(192, 192, 192, 0.1);
+}
